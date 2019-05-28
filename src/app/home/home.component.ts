@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import * as faceapi from 'face-api.js'
 import { ApiConsumerService } from '../services/api.consumer.service'
 import { AppComponent } from '../app.component'
-import { FaceRecognitionService } from '../services/face.recognition.service';
+import { FaceRecognitionService } from '../services/face.recognition.service'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-home',
@@ -37,13 +38,11 @@ export class HomeComponent implements OnInit {
     faceOptions: any
     identifiedPersons: any[]
     registeredMembers: Array<any>
+    detectedName: string
+    fps: number
 
     public constructor(private api : ApiConsumerService,
                         private faceRecognition : FaceRecognitionService) {
-
-        this.recognition = null
-        this.track = false
-        this.trackStatus = 'enable tracking'
 
         const inputSize = 640
         const scoreThreshold = 0.5
@@ -52,24 +51,58 @@ export class HomeComponent implements OnInit {
         
         this.registeredMembers = []
         this.faceOptions = new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
+
+        console.log('populating registered members ...')
+  
+        this.registeredMembers = this.faceRecognition.getRegisteredMembers()
     }
 
     public ngOnInit() { 
-      console.log('initialising camera ...')
-    
-      if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-          navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
-              this.video.nativeElement.srcObject = stream
-              this.video.nativeElement.play()
-          })
+        this.detectedName = 'ummm, wait a second, let me think ...'
+        this.recognition = null
+        this.track = false
+        this.trackStatus = 'Ready? Let\'s Play the Game!'
+        this.fps = 200
+
+        clearInterval( this.captureInterval )
+
+        console.log('initialising camera ...')
+        
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+                this.video.nativeElement.srcObject = stream
+                this.video.nativeElement.play()
+            })
       } 
-
-      console.log('populating registered members ...')
-
-      this.registeredMembers = this.faceRecognition.getRegisteredMembers()
     }
     
     public ngAfterViewInit() {
+    }
+
+    public buttonYes() {
+        this.api.rightAnswer()
+        Swal.fire({
+            type: 'success',
+            title: 'Thanks a lot for your feedback!',
+            text: 'Just as I said, I am awesome!',
+            //footer: '<a href>Why do I have this issue?</a>'
+          })
+    }
+
+    public buttonNo() {
+        this.api.wrongAnswer()
+        Swal.fire({
+            type: 'success',
+            title: 'Thanks a lot for your feedback!',
+            text: 'I will learn harder from now on!',
+            //footer: '<a href>Why do I have this issue?</a>'
+          })
+    }
+
+    public toggleFPS(event) {
+        this.fps = event.target.id
+
+        this.captureInterval = setInterval(() => { this.capture() }, this.fps)
     }
 
     public drawCanvas() {
@@ -89,11 +122,11 @@ export class HomeComponent implements OnInit {
         this.track = (this.track) ? false : true
 
         if (this.track) {
-            this.captureInterval = setInterval(() => { this.capture() }, 300)
-            this.trackStatus = 'disable tracking'
+            this.captureInterval = setInterval(() => { this.capture() }, this.fps)
+            this.trackStatus = 'Stop Guessing Me Please!'
         } else { 
             clearInterval( this.captureInterval )
-            this.trackStatus = 'enable tracking'
+            this.trackStatus = 'Ready? Let\'s Play the Game!'
         }
     }   
 
@@ -111,6 +144,11 @@ export class HomeComponent implements OnInit {
 
             if(this.track) {
                 this.recognition.subscribe(dat => {
+                    if (dat.data.name == 'unknown') {
+                        this.detectedName = 'ummm, wait a second, let me think ...'
+                    } else {
+                        this.detectedName = dat.data.name + ', right?!'
+                    }
                     const drawOptions = {
                         label: dat.data.name,
                         lineWidth: 2
@@ -142,7 +180,7 @@ export class HomeComponent implements OnInit {
               return this.registeredMembers[i]['image']
           }
       }
-  }
+    }
 
     public async capture() {
         this.identifiedPersons = []

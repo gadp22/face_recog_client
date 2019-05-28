@@ -3,10 +3,12 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { HomeComponent } from './home/home.component'
 import { MemberComponent } from './member/member.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path : 'member', component: MemberComponent},
   { path : 'dashboard', component: DashboardComponent},
+  { path : 'about', component: AboutComponent},
   { path : '', component: HomeComponent}
 ];
 

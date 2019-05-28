@@ -34,5 +34,13 @@ export class ApiConsumerService {
 
     //return this.http.post('/members', body)
   }
+
+  public rightAnswer() {
+
+  }
+
+  public wrongAnswer() {
+
+  }
 }
 

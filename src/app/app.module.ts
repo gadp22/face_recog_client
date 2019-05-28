@@ -9,6 +9,7 @@ import { NavComponent } from './nav/nav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberComponent } from './member/member.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     NavComponent,
     DashboardComponent,
-    MemberComponent
+    MemberComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
