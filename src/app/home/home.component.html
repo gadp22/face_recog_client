@@ -1,0 +1,84 @@
+
+<div class="container-fluid" (window:resize)="drawCanvas()">
+  <div class="row">
+      <div [ngClass]="{'col-xs-12':track === true,
+                      'col-xs-6':track === false}" >
+          <video #video width="100%" id="video" autoplay muted [style.display]="track ? 'none' : 'block'" ></video>
+      </div>
+    <div [ngClass]="{'col-xs-12':track === true,
+                    'col-xs-6':track === false}" >
+      <div class="row">
+        <canvas #canvas id="canvas"></canvas>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-12">
+          <button type="button" [style.display]="track ? 'none' : 'block'" class="btn btn-primary btn-lg btn-block" id="capture" (click)="capture()">Identify Yourself!</button>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-lg btn-block" 
+              [ngClass]="{'btn-danger':track === true,
+                          'btn-success':track === false}" 
+              id="track" (click)="enableTracking()">
+      {{ trackStatus }}
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="spinner-border"></div>
+<br />
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-xs-6" >
+          <table class="table table-striped">
+          <caption>List of registered members</caption>
+            <thead>
+              <tr>
+                <th>person</th>
+                <th>name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let m of registeredMembers">
+                <td>
+                  <img src="data:image/jpeg;base64,{{ m['image'] }}" height="100" />
+                </td>
+                <td>
+                    {{ m['name'] }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="col-xs-6">
+          Identified member descriptions
+          <table class="table table-striped" *ngIf="identifiedPersons.length > 0">
+                <tbody *ngFor="let i of identifiedPersons">
+                    <tr>    
+                    <td rowspan="2" width="200" height="200">
+                      <img height="200" src="data:image/jpeg;base64,{{ i['image'] }}" #identified />
+                    </td>
+                    <td>
+                      Name
+                    </td>
+                    <td #name>
+                        {{ i['name'] }}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Euclidean Distance
+                    </td>
+                    <td #distance>
+                        {{ i['distance'] }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+      </div>
+    </div>
+</div>

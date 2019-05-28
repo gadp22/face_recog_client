@@ -1,0 +1,20 @@
+{
+    "/recognition" : {
+        "target": "http://localhost:3000/",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug"
+    },
+    "/members" : {
+        "target": "http://localhost:3000/",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug"
+    },
+    "/members/:id" : {
+        "target": "http://localhost:3000/",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
