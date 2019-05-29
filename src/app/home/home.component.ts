@@ -79,24 +79,34 @@ export class HomeComponent implements OnInit {
     public ngAfterViewInit() {
     }
 
-    public buttonYes() {
-        this.api.rightAnswer()
+    public async buttonYes() {
+        let yes = this.api.rightAnswer()
+
+        yes.subscribe(function(res) {
+            console.log(res)
+        })
+            
         Swal.fire({
             type: 'success',
-            title: 'Thanks a lot for your feedback!',
+            title: 'Thanks, your feedback means a lot to me!',
             text: 'Just as I said, I am awesome!',
             //footer: '<a href>Why do I have this issue?</a>'
-          })
+        })
     }
+    
+    public async buttonNo() {
+        let no = this.api.wrongAnswer()
+        
+        no.subscribe(function(res) {
+            console.log(res)
+        })
 
-    public buttonNo() {
-        this.api.wrongAnswer()
         Swal.fire({
             type: 'success',
-            title: 'Thanks a lot for your feedback!',
+            title: 'Thanks, your feedback means a lot to me!',
             text: 'I will learn harder from now on!',
             //footer: '<a href>Why do I have this issue?</a>'
-          })
+        })
     }
 
     public toggleFPS(event) {

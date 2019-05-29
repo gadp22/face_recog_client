@@ -9,20 +9,22 @@ export class ApiConsumerService {
 
   constructor(private http: HttpClient) { }
 
+  url :string = 'http://localhost:3000'
+
   public recognize(faceDescriptor :any) {
     let body = {}
 
     body['faceDescriptor'] = faceDescriptor
 
-    return this.http.post('/recognition', body)
+    return this.http.post(this.url+'/recognition', body)
   }
 
   public getMembers() {
-    return this.http.get('/members', {headers : new HttpHeaders({})})
+    return this.http.get(this.url+'/members', {headers : new HttpHeaders({})})
   }
 
   public getMemberById(id :any) {
-    return this.http.get('/members/'+id, {headers : new HttpHeaders({})})
+    return this.http.get(this.url+'/members/'+id, {headers : new HttpHeaders({})})
   }
 
   public registerMember(member :any) {
@@ -36,11 +38,11 @@ export class ApiConsumerService {
   }
 
   public rightAnswer() {
-
+    return this.http.get(this.url+'/answeryes', {headers : new HttpHeaders({})})
   }
-
+  
   public wrongAnswer() {
-
+    return this.http.get(this.url+'/answerno', {headers : new HttpHeaders({})})
   }
 }
 
