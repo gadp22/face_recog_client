@@ -8,9 +8,11 @@ import * as faceapi from 'face-api.js'
 export class FaceRecognitionService {
 
   private registeredMembers: Array<any>
+  private captureInterval: any
 
   constructor() { 
     this.registeredMembers = []
+    this.captureInterval = null
   }
 
   public async loadModels() {
@@ -25,5 +27,13 @@ export class FaceRecognitionService {
 
   public setRegisteredMembers(registeredMembers) {
     this.registeredMembers = registeredMembers
+  }
+
+  public getCaptureInterval() {
+    return this.captureInterval
+  }
+
+  public setCaptureIntercal(captureInterval) {
+    this.captureInterval = captureInterval
   }
 }

@@ -52,18 +52,26 @@ export class HomeComponent implements OnInit {
         this.registeredMembers = []
         this.faceOptions = new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
 
-        console.log('populating registered members ...')
-  
-        this.registeredMembers = this.faceRecognition.getRegisteredMembers()
+        this.captureInterval = this.faceRecognition.getCaptureInterval()
+
+        clearInterval( this.captureInterval )
     }
 
-    public ngOnInit() { 
+    public async ngOnInit() { 
+
+        if (this.registeredMembers.length == 0) {
+            console.log('populating registered members ...')
+    
+            this.registeredMembers = await this.faceRecognition.getRegisteredMembers()
+        }
+
         this.detectedName = 'ummm, wait a second, let me think ...'
         this.recognition = null
         this.track = false
         this.trackStatus = 'Ready? Let\'s Play the Game!'
         this.fps = 200
 
+        this.captureInterval = this.faceRecognition.getCaptureInterval()
         clearInterval( this.captureInterval )
 
         console.log('initialising camera ...')
@@ -112,7 +120,11 @@ export class HomeComponent implements OnInit {
     public toggleFPS(event) {
         this.fps = event.target.id
 
+        console.log(this.fps)
+
+        clearInterval( this.captureInterval )
         this.captureInterval = setInterval(() => { this.capture() }, this.fps)
+        this.faceRecognition.setCaptureIntercal(this.captureInterval)
     }
 
     public drawCanvas() {
@@ -133,9 +145,13 @@ export class HomeComponent implements OnInit {
 
         if (this.track) {
             this.captureInterval = setInterval(() => { this.capture() }, this.fps)
+            this.faceRecognition.setCaptureIntercal(this.captureInterval)
+
             this.trackStatus = 'Stop Guessing Me Please!'
         } else { 
             clearInterval( this.captureInterval )
+            this.faceRecognition.setCaptureIntercal(this.captureInterval)
+
             this.trackStatus = 'Ready? Let\'s Play the Game!'
         }
     }   
