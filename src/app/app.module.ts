@@ -10,7 +10,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberComponent } from './member/member.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
-import {WebcamModule} from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import {WebcamModule} from 'ngx-webcam';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    WebcamModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
