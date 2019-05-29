@@ -9,7 +9,8 @@ export class ApiConsumerService {
 
   constructor(private http: HttpClient) { }
 
-  url :string = 'http://localhost:3000'
+  //url :string = 'http://10.10.20.117:3000'
+  url :string = ''
 
   public recognize(faceDescriptor :any) {
     let body = {}

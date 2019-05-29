@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
         console.log('loading models ...')
     
-        this.faceRecognition.loadModels()
+        await this.faceRecognition.loadModels()
 
         console.log('all models have been successfully loaded ...')   
     }
