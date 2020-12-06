@@ -1,11 +1,10 @@
 <div class="container-fluid ">
-  <h2>Hello! I am your Attendance Assistant! (in the future)</h2>
+  <h2>Hello! I am your Attendance Assistant!</h2>
   <h4>I'm still in the making at this moment </h4>
-  <p class="text-danger">don't use me to report your attendances, use my older brother RFID tapping system for now.</p>
   <h4>While waiting for me, I have something for you.</h4>
   <h4>I would like to challenge you!</h4>
   <h4>Let me guess your name, then just tell me that I'm way tooo smart ;)</h4>
-  <p class="text-warning"> I run on the client browser, performance may vary depending on the client machine specifications, adjust the FPS for better result</p>
+  <p class="text-warning"> I run on your browser, performance may vary depending on the client machine specifications, adjust the FPS for better result</p>
 </div>
 
 <br />
@@ -26,13 +25,42 @@
           </div>
         </div>
         <div class="row">
-            <div class="col-xs-6" [style.display]="!track ? 'none' : 'block'">
-              <button type="button" (click)="buttonYes()" class="btn btn-success btn-lg btn-block">Wow, you got it!</button>
-            </div>
-            <div class="col-xs-6" [style.display]="!track ? 'none' : 'block'">
-              <button type="button" (click)="buttonNo()" class="btn btn-danger btn-lg btn-block">Sorry, big NO!</button>
-            </div>
+          <div class="col-xs-6" [style.display]="!track ? 'none' : 'block'">
+            <button type="button" (click)="buttonYes()" class="btn btn-success btn-lg btn-block">Wow, you got it!</button>
           </div>
+          <div class="col-xs-6" [style.display]="!track ? 'none' : 'block'">
+            <button type="button" (click)="buttonNo()" class="btn btn-danger btn-lg btn-block">Sorry, big NO!</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+              <h5 [style.display]="!track ? 'none' : 'block'">My Records</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">Feedbacks: </h6>
+          </div>
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">{{feedback['yes']+feedback['no']}}</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">Said that I'm awesome: </h6>
+          </div>
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">{{feedback['yes']}}</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">Said that I've to learn more: </h6>
+          </div>
+          <div class="col-xs-6">
+              <h6 [style.display]="!track ? 'none' : 'block'">{{feedback['no']}}</h6>
+          </div>
+        </div>
     </div>
   </div>
 

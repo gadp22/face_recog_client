@@ -45,5 +45,13 @@ export class ApiConsumerService {
   public wrongAnswer() {
     return this.http.get(this.url+'/answerno', {headers : new HttpHeaders({})})
   }
+
+  public getRightAnswer() {
+    return this.http.get(this.url+'/answeryescount', {headers : new HttpHeaders({})})
+  }
+
+  public getWrongAnswer() {
+    return this.http.get(this.url+'/answernocount', {headers : new HttpHeaders({})})
+  }
 }
 

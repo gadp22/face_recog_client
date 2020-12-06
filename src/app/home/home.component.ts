@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit {
     registeredMembers: Array<any>
     detectedName: string
     fps: number
+    feedback: any[]
+
 
     public constructor(private api : ApiConsumerService,
                         private faceRecognition : FaceRecognitionService) {
@@ -48,10 +50,10 @@ export class HomeComponent implements OnInit {
         const scoreThreshold = 0.5
 
         this.identifiedPersons = []
-        
+        this.feedback = []
         this.registeredMembers = []
-        this.faceOptions = new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
 
+        this.faceOptions = new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })
         this.captureInterval = this.faceRecognition.getCaptureInterval()
 
         clearInterval( this.captureInterval )
