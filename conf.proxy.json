@@ -29,7 +29,7 @@
         "secure": false,
         "logLevel": "debug"
     },
-    "/attendance" : {
+    "/attendances" : {
         "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
