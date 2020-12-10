@@ -9,7 +9,6 @@ export class ApiConsumerService {
 
   constructor(private http: HttpClient) { }
 
-  //url :string = 'http://10.10.20.117:3000'
   url :string = ''
 
   public recognize(faceDescriptor :any) {
@@ -55,7 +54,7 @@ export class ApiConsumerService {
   }
 
   public getAttendanceList() {
-    return this.http.get(this.url+'/attendances',  {headers : new HttpHeaders({})})
+    return this.http.get(this.url+'/attendances', {headers : new HttpHeaders({})})
   }
 }
 

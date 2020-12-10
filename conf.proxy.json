@@ -1,36 +1,36 @@
 {
     "/recognition" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/members" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/members/:id" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/yes" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/no" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/attendance" : {
-        "target": "http://localhost:3000/",
+        "target": "https://hello.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
