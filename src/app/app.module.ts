@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MemberComponent } from './member/member.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AboutComponent } from './about/about.component';
     NavComponent,
     DashboardComponent,
     MemberComponent,
-    AboutComponent
+    AboutComponent,
+    AttendanceComponent
   ],
   imports: [
     BrowserModule,

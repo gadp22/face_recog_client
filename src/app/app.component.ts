@@ -47,4 +47,6 @@ export class AppComponent implements OnInit {
             console.log('done populating all registered members ...')
         })
     }
+
+    
 }

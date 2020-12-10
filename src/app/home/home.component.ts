@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
         this.detectedName = 'ummm, wait a second, let me think ...'
         this.recognition = null
         this.track = false
-        this.trackStatus = 'Ready? Let\'s Play the Game!'
+        this.trackStatus = 'Let\'s Play the Game!'
         this.fps = 200
 
         this.captureInterval = this.faceRecognition.getCaptureInterval()
@@ -154,7 +154,7 @@ export class HomeComponent implements OnInit {
             clearInterval( this.captureInterval )
             this.faceRecognition.setCaptureIntercal(this.captureInterval)
 
-            this.trackStatus = 'Ready? Let\'s Play the Game!'
+            this.trackStatus = 'Let\'s Play the Game!'
         }
     }   
 

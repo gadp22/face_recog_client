@@ -53,5 +53,9 @@ export class ApiConsumerService {
   public getWrongAnswer() {
     return this.http.get(this.url+'/answernocount', {headers : new HttpHeaders({})})
   }
+
+  public getAttendanceList() {
+    return this.http.get(this.url+'/attendances',  {headers : new HttpHeaders({})})
+  }
 }
 

@@ -2,20 +2,27 @@
   <div class="row">
       <div class="col-xs-12">
         <table class="table table-striped">
-          <caption>List of registered members</caption>
+          <caption>Attendance List</caption>
           <thead>
             <tr>
-              <th>person</th>
+              <th>date</th>
               <th>name</th>
+              <th>status</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let m of registeredMembers">
+            <tr *ngFor="let a of attendanceList">
               <td>
-                <img src="data:image/jpeg;base64,{{ m['image'] }}" height="100" />
+                  {{ a['date'] }}
               </td>
               <td>
-                  {{ m['name'] }}
+                  {{ a['name'] }}
+              </td>
+              <td *ngIf="a['status']">
+                check out
+              </td>
+              <td *ngIf="a['status'] == 0">
+                check in
               </td>
             </tr>
           </tbody>
