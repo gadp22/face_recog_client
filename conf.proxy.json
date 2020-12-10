@@ -1,36 +1,36 @@
 {
     "/recognition" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/members" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/members/:id" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/yes" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/no" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
     },
     "/attendance" : {
-        "target": "https://hello.soulmeet.id/",
+        "target": "https://faceapi.soulmeet.id/",
         "changeOrigin": true,
         "secure": false,
         "logLevel": "debug"
