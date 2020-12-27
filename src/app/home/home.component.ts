@@ -12,6 +12,12 @@ import Swal from 'sweetalert2'
 })
 
 export class HomeComponent implements OnInit {
+    @ViewChild("main")
+    public main: ElementRef
+    
+    @ViewChild("identification")
+    public identification: ElementRef
+
     @ViewChild("video")
     public video: ElementRef
 
@@ -59,12 +65,24 @@ export class HomeComponent implements OnInit {
         clearInterval( this.captureInterval )
     }
 
+    private sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     public async ngOnInit() { 
 
         if (this.registeredMembers.length == 0) {
             console.log('populating registered members ...')
     
             this.registeredMembers = await this.faceRecognition.getRegisteredMembers()
+
+            await this.sleep(2000)
+
+            let mainElement = this.main.nativeElement
+            mainElement.setAttribute('style', 'display: block')
+
+            let identificationElement = this.identification.nativeElement
+            identificationElement.setAttribute('style', 'display: block')
         }
 
         this.detectedName = 'ummm, wait a second, let me think ...'

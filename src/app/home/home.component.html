@@ -9,7 +9,7 @@
 
 <br />
 
-<div class="container-fluid" (window:resize)="drawCanvas()">
+<div class="container-fluid" #main id="main" (window:resize)="drawCanvas()" style="display: none">
   <div class="row">
     <div [ngClass]="{'col-xs-12':track === true,
                     'col-xs-6':track === false}" >
@@ -108,7 +108,7 @@
 
 <div class="spinner-border"></div>
 <br />
-<div class="container-fluid">
+<div class="container-fluid" #identification id="identification" style="display: none">
   <div class="row">
       <!--<div class="col-xs-6" >
           <table class="table table-striped">
@@ -132,7 +132,6 @@
           </table>
       </div>-->
       <div class="col-xs-12" >
-          <p [style.display]="track ? 'none' : 'block'" >Identified member descriptions</p>
           <table class="table table-striped" *ngIf="identifiedPersons.length > 0">
                 <tbody *ngFor="let i of identifiedPersons">
                     <tr>    
@@ -148,10 +147,10 @@
                   </tr>
                   <tr>
                     <td>
-                      Euclidean Distance
+                      Similarity
                     </td>
                     <td #distance>
-                        {{ i['distance'] }}
+                        {{ 1 - i['distance'] }}
                     </td>
                   </tr>
                 </tbody>
